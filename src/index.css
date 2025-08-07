@@ -2,41 +2,66 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Azure-inspired professional design system. All colors MUST be HSL. */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Azure color palette */
+    --background: 210 20% 98%;
+    --foreground: 220 15% 15%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 210 20% 99%;
+    --card-foreground: 220 15% 15%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 210 20% 99%;
+    --popover-foreground: 220 15% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Azure blue primary */
+    --primary: 210 98% 48%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 210 98% 42%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Professional secondary */
+    --secondary: 210 40% 95%;
+    --secondary-foreground: 220 15% 25%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 220 15% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 168 76% 42%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Success and error states */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 210 40% 85%;
+    --input: 210 40% 95%;
+    --ring: 210 98% 48%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+
+    /* Quiz-specific colors */
+    --quiz-correct: 142 76% 36%;
+    --quiz-incorrect: 0 84% 60%;
+    --quiz-unanswered: 220 15% 65%;
+    
+    /* Azure gradients */
+    --gradient-azure: linear-gradient(135deg, hsl(210 98% 48%), hsl(195 100% 50%));
+    --gradient-card: linear-gradient(145deg, hsl(210 20% 99%), hsl(210 40% 96%));
+    --gradient-quiz: linear-gradient(135deg, hsl(168 76% 42%), hsl(210 98% 48%));
+    
+    /* Shadow system */
+    --shadow-sm: 0 1px 2px 0 hsl(220 15% 15% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(220 15% 15% / 0.1), 0 2px 4px -1px hsl(220 15% 15% / 0.06);
+    --shadow-lg: 0 10px 15px -3px hsl(220 15% 15% / 0.1), 0 4px 6px -2px hsl(220 15% 15% / 0.05);
+    --shadow-azure: 0 8px 25px -5px hsl(210 98% 48% / 0.25);
+
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -56,33 +81,52 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* Dark Azure theme */
+    --background: 220 25% 8%;
+    --foreground: 210 40% 95%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 220 25% 10%;
+    --card-foreground: 210 40% 95%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 220 25% 10%;
+    --popover-foreground: 210 40% 95%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 210 98% 55%;
+    --primary-foreground: 220 25% 8%;
+    --primary-hover: 210 98% 60%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 220 25% 15%;
+    --secondary-foreground: 210 40% 90%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 220 25% 15%;
+    --muted-foreground: 210 20% 65%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 168 76% 45%;
+    --accent-foreground: 220 25% 8%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --success: 142 76% 42%;
+    --success-foreground: 220 25% 8%;
+    --warning: 38 92% 55%;
+    --warning-foreground: 220 25% 8%;
+    --destructive: 0 84% 65%;
+    --destructive-foreground: 220 25% 8%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --border: 220 25% 20%;
+    --input: 220 25% 15%;
+    --ring: 210 98% 55%;
+
+    --quiz-correct: 142 76% 42%;
+    --quiz-incorrect: 0 84% 65%;
+    --quiz-unanswered: 210 20% 50%;
+    
+    --gradient-azure: linear-gradient(135deg, hsl(210 98% 55%), hsl(195 100% 55%));
+    --gradient-card: linear-gradient(145deg, hsl(220 25% 10%), hsl(220 25% 15%));
+    --gradient-quiz: linear-gradient(135deg, hsl(168 76% 45%), hsl(210 98% 55%));
+    
+    --shadow-sm: 0 1px 2px 0 hsl(0 0% 0% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(0 0% 0% / 0.1), 0 2px 4px -1px hsl(0 0% 0% / 0.06);
+    --shadow-lg: 0 10px 15px -3px hsl(0 0% 0% / 0.1), 0 4px 6px -2px hsl(0 0% 0% / 0.05);
+    --shadow-azure: 0 8px 25px -5px hsl(210 98% 55% / 0.4);
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -100,6 +144,55 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  /* Smooth transitions */
+  * {
+    @apply transition-colors duration-200;
+  }
+}
+
+@layer components {
+  /* Quiz-specific components */
+  .quiz-option {
+    @apply rounded-xl border border-border bg-card p-4 transition-all duration-200 hover:border-primary/50 hover:bg-card/80;
+  }
+  
+  .quiz-option.selected {
+    @apply border-primary bg-primary/5;
+  }
+  
+  .quiz-option.correct {
+    @apply border-success bg-success/10;
+  }
+  
+  .quiz-option.incorrect {
+    @apply border-destructive bg-destructive/10;
+  }
+  
+  .gradient-azure {
+    background: var(--gradient-azure);
+  }
+  
+  .gradient-card {
+    background: var(--gradient-card);
+  }
+  
+  .gradient-quiz {
+    background: var(--gradient-quiz);
+  }
+  
+  .shadow-azure {
+    box-shadow: var(--shadow-azure);
+  }
+
+  /* Glass morphism effect */
+  .glass {
+    @apply backdrop-blur-md bg-white/10 border border-white/20;
+  }
+  
+  .glass-dark {
+    @apply backdrop-blur-md bg-black/20 border border-white/10;
   }
 }
