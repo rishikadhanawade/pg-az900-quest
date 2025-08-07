@@ -60,9 +60,9 @@ const getDifficultyColor = (difficulty: string) => {
 export default function QuizApp() {
   const [allQs, setAll] = useState<QuestionRow[]>([]);
   const [filtered, setFiltered] = useState<QuestionRow[]>([]);
-  const [setId, setSetId] = useState<string>("");
-  const [domain, setDomain] = useState<string>("");
-  const [diff, setDiff] = useState<string>("");
+  const [setId, setSetId] = useState<string>("all-sets");
+  const [domain, setDomain] = useState<string>("all-domains");
+  const [diff, setDiff] = useState<string>("all-difficulties");
   const [currentIdx, setIdx] = useState(0);
   const [score, setScore] = useState(0);
   const [selected, setSel] = useState<string[]>([]);
@@ -89,7 +89,9 @@ export default function QuizApp() {
   // Apply filters
   useEffect(() => {
     const out = allQs.filter(
-      q => (!setId || q.set_id === setId) && (!domain || q.domain === domain) && (!diff || q.difficulty === diff)
+      q => (!setId || setId === "all-sets" || q.set_id === setId) && 
+           (!domain || domain === "all-domains" || q.domain === domain) && 
+           (!diff || diff === "all-difficulties" || q.difficulty === diff)
     );
     setFiltered(out);
   }, [allQs, setId, domain, diff]);
@@ -251,7 +253,7 @@ export default function QuizApp() {
                   <SelectValue placeholder="All Sets" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">All Sets</SelectItem>
+                  <SelectItem value="all-sets">All Sets</SelectItem>
                   {setOptions.map(set => (
                     <SelectItem key={set} value={set}>{set}</SelectItem>
                   ))}
@@ -266,7 +268,7 @@ export default function QuizApp() {
                   <SelectValue placeholder="All Domains" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">All Domains</SelectItem>
+                  <SelectItem value="all-domains">All Domains</SelectItem>
                   {domainOptions.map(dom => (
                     <SelectItem key={dom} value={dom}>{dom}</SelectItem>
                   ))}
@@ -281,7 +283,7 @@ export default function QuizApp() {
                   <SelectValue placeholder="All Difficulties" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">All Difficulties</SelectItem>
+                  <SelectItem value="all-difficulties">All Difficulties</SelectItem>
                   {difficultyOptions.map(difficulty => (
                     <SelectItem key={difficulty} value={difficulty}>
                       <span className="capitalize">{difficulty}</span>
